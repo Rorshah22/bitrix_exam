@@ -26,7 +26,7 @@ IncludeTemplateLangFile(__FILE__);
 		
 	</style>
 	<![endif]-->
-	<meta property="specialdate" content="<? $APPLICATION->ShowProperty('specialdate'); ?>">
+	<? $APPLICATION->ShowProperty('canonical'); ?>
 
 	<title><? $APPLICATION->ShowTitle() ?></title>
 </head>
@@ -38,13 +38,13 @@ IncludeTemplateLangFile(__FILE__);
 
 			<table id="logo">
 				<tr>
-					<td><a href="<?= SITE_DIR ?>" title="<?= GetMessage('CFT_MAIN') ?>"><?
-																																							$APPLICATION->IncludeFile(
-																																								SITE_DIR . "include/company_name.php",
-																																								array(),
-																																								array("MODE" => "html")
-																																							);
-																																							?></a></td>
+					<td><a href="<?= SITE_DIR ?>" title="<?= GetMessage('CFT_MAIN') ?>">
+							<? $APPLICATION->IncludeFile(
+								SITE_DIR . "include/company_name.php",
+								array(),
+								array("MODE" => "html")
+							);
+							?></a></td>
 				</tr>
 			</table>
 
