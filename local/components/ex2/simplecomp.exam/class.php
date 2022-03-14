@@ -15,6 +15,6 @@ class SimpleComp extends CBitrixComponent
 
   public function executeComponent()
   {
-    return $this->arResult;
+    $this->includeComponentTemplate();
   }
 }
