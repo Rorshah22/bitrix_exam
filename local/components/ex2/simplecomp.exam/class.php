@@ -129,22 +129,22 @@ class SimpleComp extends CBitrixComponent
 
   public function executeComponent()
   {
+    global $APPLICATION;
+
     if (!Loader::includeModule("iblock")) {
       ShowError(GetMessage("SIMPLECOMP_EXAM2_IBLOCK_MODULE_NONE"));
       return;
     }
 
     if ($this->startResultCache()) {
-
       $this->arResult["NEWS"] = $this->resultFormation();
-      $countItems = $this->arResult["COUNT"];
-
-      global $APPLICATION;
-      $APPLICATION->SetTitle(GetMessage("COUNT", ["#CNT#" => $countItems]));
 
       $this->includeComponentTemplate();
     } else {
       $this->abortResultCache();
     }
+
+    $countItems = $this->arResult["COUNT"];
+    $APPLICATION->SetTitle(GetMessage("COUNT", ["#CNT#" => $countItems]));
   }
 }
