@@ -6,4 +6,5 @@ $arComponentDescription = array(
     "ID" => "simplecomp.exam",
     "NAME" => GetMessage("SIMPLECOMP_SECTION_NAME"),
   ),
+  "CACHE_PATH" => "Y",
 );

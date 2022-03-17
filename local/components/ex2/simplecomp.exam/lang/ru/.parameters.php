@@ -4,3 +4,4 @@ $MESS["CATALOG_IBLOCK_ID"] = "ID инфоблока с каталогом тов
 $MESS["CLASSIFIER_IBLOCK_ID"] = "ID инфоблока с классификатором";
 $MESS["LINK_TEMPLATE_DETAILED_PREVIEWS"] = "Шаблон ссылки на детальный просмотр товара";
 $MESS["CODE_PROPERTY_ITEM"] = "Код свойства товара, в котором хранится привязка товара к классификатору";
+$MESS["CP_BC_CACHE_GROUPS"] = "Учитывать права доступа";

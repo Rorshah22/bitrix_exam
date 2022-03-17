@@ -15,7 +15,7 @@ $arComponentParameters = array(
       "PARENT" => "BASE",
       "TYPE" => "STRING",
     ],
-    "LINK_TEMPLATE_DETAILED_PREVIEWS" => [
+    "TEMPLATE" => [
       "NAME" => Loc::getMessage("LINK_TEMPLATE_DETAILED_PREVIEWS"),
       "PARENT" => "BASE",
       "TYPE" => "STRING",
@@ -25,6 +25,12 @@ $arComponentParameters = array(
       "PARENT" => "BASE",
       "TYPE" => "STRING",
     ],
+    "CACHE_GROUPS" => array(
+      "PARENT" => "CACHE_SETTINGS",
+      "NAME" => Loc::getMessage("CP_BC_CACHE_GROUPS"),
+      "TYPE" => "CHECKBOX",
+      "DEFAULT" => "Y",
+    ),
     "CACHE_TIME"  =>  ["DEFAULT" => 36000000],
 
   ),
