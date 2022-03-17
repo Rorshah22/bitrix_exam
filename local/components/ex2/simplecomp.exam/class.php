@@ -11,8 +11,8 @@ class SimpleComp extends CBitrixComponent
   {
 
     return [
-      "CATALOG_IBLOCK_ID" => !empty($arParams["CATALOG_IBLOCK_ID"]) ?  trim($arParams["CATALOG_IBLOCK_ID"]) : 0,
-      "CLASSIFIER_IBLOCK_ID" => !empty($arParams["CLASSIFIER_IBLOCK_ID"]) ?  trim($arParams["CLASSIFIER_IBLOCK_ID"])  : 0,
+      "CATALOG_IBLOCK_ID" => !empty($arParams["CATALOG_IBLOCK_ID"]) ?  intval(trim($arParams["CATALOG_IBLOCK_ID"])) : 0,
+      "CLASSIFIER_IBLOCK_ID" => !empty($arParams["CLASSIFIER_IBLOCK_ID"]) ?  intval(trim($arParams["CLASSIFIER_IBLOCK_ID"]))  : 0,
       "TEMPLATE" => trim($arParams["TEMPLATE"]),
       "CODE_PROPERTY_ITEM" => trim($arParams["CODE_PROPERTY_ITEM"]),
       "CACHE_TIME" => !empty($arParams["CACHE_TIME"]) ? intval($arParams["CACHE_TIME"]) : 0,
