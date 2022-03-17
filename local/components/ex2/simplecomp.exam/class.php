@@ -15,6 +15,7 @@ class SimpleComp extends CBitrixComponent
       "CLASSIFIER_IBLOCK_ID" => !empty($arParams["CLASSIFIER_IBLOCK_ID"]) ?  intval(trim($arParams["CLASSIFIER_IBLOCK_ID"]))  : 0,
       "TEMPLATE" => trim($arParams["TEMPLATE"]),
       "CODE_PROPERTY_ITEM" => trim($arParams["CODE_PROPERTY_ITEM"]),
+      "CACHE_GROUPS" => !empty($arParams["CACHE_GROUPS"]) ? $arParams["CACHE_GROUPS"] : "Y",
       "CACHE_TIME" => !empty($arParams["CACHE_TIME"]) ? intval($arParams["CACHE_TIME"]) : 0,
     ];
   }
@@ -24,7 +25,7 @@ class SimpleComp extends CBitrixComponent
     $arSelect = ["ID", "IBLOCK_ID", "NAME"];
     $arFilter = [
       "IBLOCK_ID" => $this->arParams["CLASSIFIER_IBLOCK_ID"],
-      "CHECK_PERMISSIONS" => "Y",
+      "CHECK_PERMISSIONS" => $this->arParams["CACHE_GROUPS"],
       "ACTIVE" => "Y"
     ];
 
@@ -40,7 +41,7 @@ class SimpleComp extends CBitrixComponent
     $arSelect = ["ID", "IBLOCK_ID", "NAME", "PROPERTY_MATERIAL", "PROPERTY_ARTNUMBER", "PROPERTY_PRICE", "PROPERTY_" . $this->arParams["CODE_PROPERTY_ITEM"], "DETAIL_PAGE_URL"];
     $arFilter = [
       "IBLOCK_ID" => $this->arParams["CATALOG_IBLOCK_ID"],
-      "CHECK_PERMISSIONS" => "Y",
+      "CHECK_PERMISSIONS" => $this->arParams["CACHE_GROUPS"],
       "ACTIVE" => "Y"
     ];
 
