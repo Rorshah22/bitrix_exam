@@ -49,7 +49,8 @@ class SimpleComp extends CBitrixComponent
     $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
     while ($arr = $res->GetNext()) {
 
-      $result[] = $arr;
+      $result["ITEMS"][] = $arr;
+      $result["PRICE"][] = $arr["PROPERTY_PRICE_VALUE"];
     }
 
     return $result;
@@ -58,7 +59,7 @@ class SimpleComp extends CBitrixComponent
   private function resultFormation()
   {
     $classifiers = $this->getClassifier()["CLASSIFIER"];
-    $elements = $this->getElementCatalog();
+    $elements = $this->getElementCatalog()["ITEMS"];
 
     foreach ($classifiers as $key => $classif) {
 
@@ -78,25 +79,27 @@ class SimpleComp extends CBitrixComponent
   {
     global $USER;
     global $APPLICATION;
-
     if (!Loader::includeModule("iblock")) {
 
       ShowError(GetMessage("SIMPLECOMP_EXAM2_IBLOCK_MODULE_NONE"));
       return;
     }
+    $this->arResult["COUNT"] = count($this->getClassifier()["CLASSIFIER"]);
+    $counter =  $this->arResult["COUNT"];
+    $price = $this->getElementCatalog()["PRICE"];
 
 
     if ($this->startResultCache(false, $USER->GetGroups())) {
 
-      $this->arResult["COUNT"] = count($this->getClassifier());
-      $counter =  $this->arResult["COUNT"];
 
       $this->arResult['SECTIONS'] = $this->resultFormation();
 
       $this->includeComponentTemplate();
-    } else {
-      $this->abortResultCache();
     }
+
+
+    $APPLICATION->AddViewContent("min_price", min($price));
+    $APPLICATION->AddViewContent("max_price", max($price));
     $APPLICATION->SetTitle(GetMessage("COUNT_SECTIONS", ["#CNT#" => "$counter"]));
   }
 }
