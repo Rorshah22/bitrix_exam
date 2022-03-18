@@ -18,7 +18,7 @@ use Bitrix\Main\Localization\Loc;
             <?= $item["PROPERTY_PRICE_VALUE"] ?> -
             <?= $item["PROPERTY_MATERIAL_VALUE"] ?> -
             <?= $item["PROPERTY_ARTNUMBER_VALUE"] ?> -
-            <a href="<?= $item["DETAIL_PAGE_URL"] ?>">ссылка на детальный просмотр</a>
+            (<?= $item["DETAIL_PAGE_URL"] ?>)
           </li>
 
         <? endforeach; ?>

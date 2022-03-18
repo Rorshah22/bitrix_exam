@@ -44,12 +44,19 @@ class SimpleComp extends CBitrixComponent
       "CHECK_PERMISSIONS" => $this->arParams["CACHE_GROUPS"],
       "ACTIVE" => "Y"
     ];
+    $sort = [
+      "NAME" => "ASC",
+      "SORT" => "ASC"
+    ];
 
-    $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
+    $res = CIBlockElement::GetList($sort, $arFilter, false, false, $arSelect);
+    $res->SetUrlTemplates($this->arParams["TEMPLATE"]);
+
     while ($arr = $res->GetNext()) {
 
       $result[] = $arr;
     }
+
 
     return $result;
   }

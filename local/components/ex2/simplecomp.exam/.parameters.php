@@ -19,6 +19,7 @@ $arComponentParameters = array(
       "NAME" => Loc::getMessage("LINK_TEMPLATE_DETAILED_PREVIEWS"),
       "PARENT" => "BASE",
       "TYPE" => "STRING",
+      "DEFAULT" => "catalog_exam/#SECTION_ID#/#ELEMENT_CODE#"
     ],
     "CODE_PROPERTY_ITEM" => [
       "NAME" => Loc::getMessage("CODE_PROPERTY_ITEM"),
