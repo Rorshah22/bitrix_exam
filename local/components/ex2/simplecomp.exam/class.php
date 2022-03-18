@@ -30,7 +30,8 @@ class SimpleComp extends CBitrixComponent
 
     $res = CIBlockElement::GetList([], $arFilter, false, false, $arSelect);
     while ($arr = $res->Fetch()) {
-      $result[] = $arr;
+      $result["CLASSIFIER"][] = $arr;
+      $result["ID"][] = $arr["ID"];
     }
     return $result;
   }
@@ -40,6 +41,7 @@ class SimpleComp extends CBitrixComponent
     $arSelect = ["ID", "IBLOCK_ID", "NAME", "PROPERTY_MATERIAL", "PROPERTY_ARTNUMBER", "PROPERTY_PRICE", "PROPERTY_" . $this->arParams["CODE_PROPERTY_ITEM"], "DETAIL_PAGE_URL"];
     $arFilter = [
       "IBLOCK_ID" => $this->arParams["CATALOG_IBLOCK_ID"],
+      "PROPERTY_" . $this->arParams["CODE_PROPERTY_ITEM"] => $this->getClassifier()["ID"],
       "CHECK_PERMISSIONS" => "Y",
       "ACTIVE" => "Y"
     ];
@@ -55,7 +57,7 @@ class SimpleComp extends CBitrixComponent
 
   private function resultFormation()
   {
-    $classifiers = $this->getClassifier();
+    $classifiers = $this->getClassifier()["CLASSIFIER"];
     $elements = $this->getElementCatalog();
 
     foreach ($classifiers as $key => $classif) {
