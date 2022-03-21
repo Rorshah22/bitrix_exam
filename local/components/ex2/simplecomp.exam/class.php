@@ -86,17 +86,16 @@ class SimpleComp extends CBitrixComponent
     }
     $this->arResult["COUNT"] = count($this->getClassifier()["CLASSIFIER"]);
     $counter =  $this->arResult["COUNT"];
-    $price = $this->getElementCatalog()["PRICE"];
-
 
     if ($this->startResultCache(false, $USER->GetGroups())) {
 
-
+      $this->arResult["PRICE"] = $this->getElementCatalog()["PRICE"];
       $this->arResult['SECTIONS'] = $this->resultFormation();
 
       $this->includeComponentTemplate();
     }
 
+    $price = $this->arResult["PRICE"];
 
     $APPLICATION->AddViewContent("min_price", min($price));
     $APPLICATION->AddViewContent("max_price", max($price));

@@ -150,9 +150,10 @@ IncludeTemplateLangFile(__FILE__);
 					</div>
 				</div>
 				<div style="color:red; margin: 34px 15px 35px 15px">
-					<span>max price: <? $APPLICATION->ShowViewContent('max_price'); ?></span>
-
-					<span>min price: <? $APPLICATION->ShowViewContent('min_price'); ?></span>
+					<span>Максимальная цена: <? $APPLICATION->ShowViewContent('max_price'); ?></span>
+				</div>
+				<div style="color:red; margin: 34px 15px 35px 15px">
+					<span>Минимальная цена: <? $APPLICATION->ShowViewContent('min_price'); ?></span>
 				</div>
 
 				<div class="information-block">
