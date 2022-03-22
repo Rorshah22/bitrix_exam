@@ -10,6 +10,7 @@ IncludeTemplateLangFile(__FILE__);
 	<? $APPLICATION->ShowHead(); ?>
 	<link href="<?= SITE_TEMPLATE_PATH ?>/common.css" type="text/css" rel="stylesheet" />
 	<link href="<?= SITE_TEMPLATE_PATH ?>/colors.css" type="text/css" rel="stylesheet" />
+	<? CUtil::InitJSCore(); ?>
 
 	<!--[if lte IE 6]>
 	<style type="text/css">

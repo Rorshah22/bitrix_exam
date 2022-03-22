@@ -12,16 +12,16 @@
 
 		<div>
 			<? if ($arParams["REPORT_AJAX"] === "Y") : ?>
-				<a href="#" id="report-ajax">пожаловаться!</a>
+				<a href="#" id="report-ajax" data-id="<?= $arResult["ID"] ?>">пожаловаться!</a>
 
 			<? else : ?>
-				<a href="&REPORT_GET?ID=<?= $arResult["ID"] ?>">пожаловаться!</a>
+				<a href="?ID=<?= $arResult["ID"] ?>">пожаловаться!</a>
 			<? endif; ?>
-			<span id="response-text"></span>
+
+			<span id="response-text"> </span>
 
 		</div>
 		<br>
-
 
 	<? endif; ?>
 	<div class="news-detail">
