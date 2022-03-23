@@ -8,7 +8,7 @@ window.onload = () => {
       e.preventDefault();
 
       const response = BX.ajax.runComponentAction("custom:news.detail", "report", {
-        mode: "ajax",
+        mode: "class",
         data: {
           fields: {
             id: this.dataset.id

@@ -1,18 +1,18 @@
 <?
 
 use Bitrix\Main\Application;
+// use Bitrix\Main\Engine\CurrentUser;
 
 $request = Application::getInstance()->getContext()->getRequest();
 $id = $request->getQuery('ID');
+settype($id, 'integer');
 
-if (isset($id) && intval($id) !== 0) {
-  require($_SERVER["DOCUMENT_ROOT"] . "/local/components/custom/news.detail/ajax.php");
+if (isset($id) && $id !== 0) {
 
-  settype($id, 'integer');
   $arGet = ['id' => $id];
 
-  $response = new ResponseReportController();
-  $result = $response->reportAction($arGet);
+  CBitrixComponent::includeComponentClass('custom:news.detail');
+  $result = ResponseReportController::reportAction($arGet);
 
   echo "<span id='response-text-get' data-res=" . $result . "></span>";
 }
