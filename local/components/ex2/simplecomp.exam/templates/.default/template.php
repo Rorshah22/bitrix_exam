@@ -28,3 +28,10 @@ use Bitrix\Main\Localization\Loc;
 
   <? endforeach; ?>
 </ul>
+
+<? $this->SetViewTarget("min_price"); ?>
+
+<div style="color:red; margin: 34px 15px 35px 15px">Минимальная цена: <?= $arResult["PRICE"]["MIN"] ?></div>
+<div style="color:red; margin: 34px 15px 35px 15px">Максимальная цена: <?= $arResult["PRICE"]["MAX"] ?></div>
+
+<? $this->EndViewTarget(); ?>
