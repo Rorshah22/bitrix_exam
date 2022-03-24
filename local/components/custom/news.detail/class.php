@@ -25,17 +25,15 @@ class ResponseReportController extends CBitrixComponent implements Controllerabl
   }
 
   public function reportAction(array $fields, CurrentUser $currentUser)
-  // public function reportAction(array $fields)
   {
 
     if (Loader::includeModule("iblock")) {
 
       $element = new CIBlockElement;
 
-      global $USER;
 
-      if ($USER->IsAuthorized()) {
-        $user = "ID: " . CUser::GetID() .  "; Login: " . CUser::GetLogin() . "; Ф.И.О.: " . CUser::GetFullName();
+      if ($currentUser->getId()) {
+        $user = "ID: " . $currentUser->getId() .  "; Login: " . $currentUser->getLogin() . "; Ф.И.О.: " . $currentUser->getFullName();
       } else {
         $user = "Не авторизован";
       }
