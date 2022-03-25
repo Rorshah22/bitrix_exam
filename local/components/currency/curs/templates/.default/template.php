@@ -11,12 +11,12 @@ if (!defined("B_PROLOG_INCLUDED") && B_PROLOG_INCLUDED !== true) die();
   <? foreach ($arResult["CURRENT_CURS"] as $key => $item) : ?>
 
     <tr class="table-curs">
-
       <td><?= $key + 1 ?></td>
-      <td><?= $item["CURRENCY"] ?></td>
-      <td><?= $item["RATE"] ?></td>
-      <td><?= new \Bitrix\Main\Type\DateTime($item["DATE"]) ?></td>
+      <td style="text-align: end"><?= $item["CURRENCY"] ?></td>
+      <td style="text-align: end"><?= $item["RATE"] ?></td>
+      <td style="text-align: end"><?= $item["DATE"]->format("d.m.Y") ?></td>
     </tr>
+
   <? endforeach; ?>
 </table>
 <br>

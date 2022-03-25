@@ -9,6 +9,7 @@ Loader::registerNamespace(
   Loader::getDocumentRoot() . "/local/manao/lib/"
 );
 
+
 function testAgent()
 {
   CBitrixComponent::includeComponentClass('currency:curs');

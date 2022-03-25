@@ -2,7 +2,8 @@
 
 namespace Manao\Curs;
 
-use Manao\Curs\CursTable;
+use Manao\Curs\CursTable,
+  Bitrix\Main\Type\DateTime;
 
 class CurrentCurs
 {
@@ -27,7 +28,7 @@ class CurrentCurs
 
     $this->countItems = count($res);
 
-    if ($dateTime = CursTable::getList(["select" => ["DATE"]])->fetch()) {
+    if ($dateTime = CursTable::getList(['order' => ['ID' => 'DESC'], "select" => ["DATE"]],)->fetch()) {
       $dateTime = $dateTime["DATE"]->getTimestamp();
     }
 
@@ -35,6 +36,7 @@ class CurrentCurs
     foreach ($res as $value) {
 
       if ($dateTime === strtotime($value["Date"])) {
+
         break;
       }
 
@@ -42,11 +44,10 @@ class CurrentCurs
         $value["Cur_OfficialRate"] = $value["Cur_OfficialRate"] / $value['Cur_Scale'];
       }
 
-
       CursTable::add([
         "CURRENCY" => $value["Cur_Abbreviation"],
         "RATE" => $value["Cur_OfficialRate"],
-        "DATE" => new \Bitrix\Main\Type\DateTime($value["Date"], "Y-m-d H:i:s")
+        "DATE" => new DateTime($value["Date"], "Y-m-d H:i:s")
       ]);
     }
   }

@@ -19,6 +19,7 @@ class Curs extends CBitrixComponent implements Controllerable
   {
     $obj = new CurrentCurs;
     $obj->addCursInTable();
+    return array_reverse($obj->getCurs());
   }
 
   public function executeComponent()
