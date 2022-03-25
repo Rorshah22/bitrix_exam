@@ -1,4 +1,3 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <?
 $aMenuLinks = Array(
 	Array(
@@ -11,6 +10,13 @@ $aMenuLinks = Array(
 	Array(
 		"Карта сайта", 
 		"map.php", 
+		Array(), 
+		Array(), 
+		"" 
+	),
+	Array(
+		"test", 
+		"/search/test.php", 
 		Array(), 
 		Array(), 
 		"" 
