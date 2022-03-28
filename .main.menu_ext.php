@@ -11,7 +11,7 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
     "DETAIL_PAGE_URL" => "#SECTION_ID#/#ELEMENT_ID#.html",
     "IBLOCK_TYPE" => "products",
     "IBLOCK_ID" => "9",
-    "DEPTH_LEVEL" => "2",
+    "DEPTH_LEVEL" => "3",
     "CACHE_TYPE" => "A",
     "CACHE_TIME" => "36000000"
   ),

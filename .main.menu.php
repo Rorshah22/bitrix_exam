@@ -2,7 +2,7 @@
 if (!defined("B_PROLOG_INCLUDED") && B_PROLOG_INCLUDED !== true)  die();
 
 $aMenuLinks = array(array(
-  "Распрожада",
+  "Распродажа",
   "sale/",
   array(),
   array(),
