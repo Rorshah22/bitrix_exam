@@ -55,24 +55,23 @@ use Bitrix\Main\Page\Asset;
 		<div class="footer__col">
 			<h3 class="footer__title">Lassie клуб</h3>
 			<? $APPLICATION->IncludeComponent(
-	"bitrix:menu", 
-	"bottom_menu", 
-	array(
-		"COMPONENT_TEMPLATE" => "bottom_menu",
-		"ROOT_MENU_TYPE" => "bottom_club",
-		"MENU_CACHE_TYPE" => "N",
-		"MENU_CACHE_TIME" => "3600",
-		"MENU_CACHE_USE_GROUPS" => "Y",
-		"MENU_CACHE_GET_VARS" => array(
-		),
-		"MAX_LEVEL" => "1",
-		"CHILD_MENU_TYPE" => "left",
-		"USE_EXT" => "N",
-		"DELAY" => "N",
-		"ALLOW_MULTI_SELECT" => "N"
-	),
-	false
-); ?>
+				"bitrix:menu",
+				"bottom_menu",
+				array(
+					"COMPONENT_TEMPLATE" => "bottom_menu",
+					"ROOT_MENU_TYPE" => "bottom_club",
+					"MENU_CACHE_TYPE" => "N",
+					"MENU_CACHE_TIME" => "3600",
+					"MENU_CACHE_USE_GROUPS" => "Y",
+					"MENU_CACHE_GET_VARS" => array(),
+					"MAX_LEVEL" => "1",
+					"CHILD_MENU_TYPE" => "left",
+					"USE_EXT" => "N",
+					"DELAY" => "N",
+					"ALLOW_MULTI_SELECT" => "N"
+				),
+				false
+			); ?>
 		</div>
 		<div class="footer__col">
 			<h3 class="footer__title">Социальные сети</h3>
@@ -129,7 +128,7 @@ use Bitrix\Main\Page\Asset;
 <?
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/assets/scripts/app.min.js");
 ?>
-
+</div>
 </body>
 
 </html>
