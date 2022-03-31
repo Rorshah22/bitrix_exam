@@ -175,10 +175,15 @@ $APPLICATION->SetTitle("каталог");
 		),
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
-			"section" => "#SECTION_ID#/",
-			"element" => "#SECTION_ID#/#ELEMENT_ID#/",
-			"compare" => "",
+			"section" => "#SECTION_CODE_PATH#/",
+			"element" => "/catalog#SECTION_ID#/#ELEMENT_ID#/",
+			"compare" => "compare.php?action=#ACTION_CODE#",
 			"smart_filter" => "#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/",
+		),
+		"VARIABLE_ALIASES" => array(
+			"compare" => array(
+				"ACTION_CODE" => "action",
+			),
 		)
 	),
 	false,

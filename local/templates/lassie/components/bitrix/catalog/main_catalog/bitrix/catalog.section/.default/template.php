@@ -27,31 +27,45 @@ use \Bitrix\Main\Localization\Loc;
  */
 
 
+
 $this->setFrameMode(true);
 ?>
 
-<div class="catalog__main">
-  <div class="catalog__sort">
-    <div class="catalog__sort-group"><span class="catalog__sort-text text">Сортировать по:</span>
-      <select name="sort" class="js-select select">
-        <option value="popular">Популярности</option>
-        <option value="price">Цене</option>
-        <option value="new">Новизне</option>
-        <option value="availibel">Наличию</option>
-      </select>
+<? if ($arParams["AJAX"] !== 'y') : ?>
+  <div class="catalog__main">
+
+
+
+    <div class="catalog__sort">
+      <div class="catalog__sort-group"><span class="catalog__sort-text text">Сортировать по:</span>
+        <select id="select_sort" name="sort" class="js-select select">
+          <option value="popular">Популярности</option>
+          <option value="price">Цене</option>
+          <option value="new">Новизне</option>
+          <option value="availibel">Наличию</option>
+        </select>
+      </div>
+      <div class="catalog__sort-group"><span class="catalog__sort-text text">Отображать по:</span>
+        <select id="count_page" name="display" class="js-select select">
+
+          <option value="12">12</option>
+
+          <option value="9" selected>9</option>
+
+          <option value="6">6</option>
+
+          <option value="3">3</option>
+
+        </select>
+      </div>
     </div>
-    <div class="catalog__sort-group"><span class="catalog__sort-text text">Отображать по:</span>
-      <select name="display" class="js-select select">
-        <option value="12">12</option>
-        <option value="9">9</option>
-        <option value="6">6</option>
-        <option value="3">3</option>
-      </select>
-    </div>
-  </div>
-  <div class="catalog__goods-wrapper">
-    <ul class="goods">
+
+    <div class="catalog__goods-wrapper">
+    <? endif; ?>
+    <ul class="goods" data-section_id=<?= $arParams["SECTION_ID"] ?>>
+
       <? foreach ($arResult["ITEMS"] as  $arItem) : ?>
+
 
         <li class="goods__item">
           <article class="good">
@@ -110,7 +124,16 @@ $this->setFrameMode(true);
       <li class="goods__item"></li>
       <!--В конце списка товаров нужно добавлять 2 пустых элемента для равномерного выравнивания элементов на любом разрешении экрана-->
     </ul>
+
+    <? if ($arParams["AJAX"] !== 'y') : ?>
+    </div>
+
+    <? if (count($arResult["ITEMS"]) > 12) : ?>
+      <div class="catalog__more">
+        <a href="javascript:void(0);" class="catalog__more-btn link">
+          <span class="icon-load"></span>Загрузить еще 12 товаров</a>
+        <a href="javascript:void(0);" class="link text">Показать все</a>
+      </div>
+    <? endif; ?>
   </div>
-  <div class="catalog__more"><a href="javascript:void(0);" class="catalog__more-btn link"><span class="icon-load"></span>Загрузить еще 12 товаров</a><a href="javascript:void(0);" class="link text">Показать все</a>
-  </div>
-</div>
+<? endif; ?>

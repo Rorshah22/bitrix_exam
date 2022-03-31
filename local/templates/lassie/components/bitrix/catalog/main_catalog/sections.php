@@ -1,4 +1,5 @@
-<?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+<?
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 /** @var array $arParams */
 /** @var array $arResult */
@@ -13,11 +14,33 @@
 /** @var CBitrixComponent $component */
 
 $this->setFrameMode(true);
-echo '<pre>';
-// print_r($arParams);
-echo '</pre>';
 
-?>
+
+if (in_array($_GET["page"], [3, 6, 9, 12])) {
+	$arParams["PAGE_ELEMENT_COUNT"] = $_GET["page"];
+	// $arParams["PAGE_ELEMENT_COUNT"] = $_GET["page"];
+}
+
+if (isset($_GET["sortBy"])) {
+	if ($_GET["sortBy"] === "popular") {
+		$arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_PRICE';
+	}
+	if ($_GET["sortBy"] === "price") {
+		$arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_PRICE';
+	}
+	if ($_GET["sortBy"] === "new") {
+		$arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_NEW';
+	}
+	if ($_GET["sortBy"] === "availibel") {
+		$arParams["ELEMENT_SORT_FIELD"] = 'PROPERTY_PRICE';
+	}
+}
+
+if ($_GET["ajax_mode"] == 'y') {
+	$APPLICATION->RestartBuffer();
+}
+	?>
+<?if ($_GET["ajax_mode"] !== 'y') :?>
 	<h1>Головные уборы</h1>
 	<h2>SECTIONS</h2>
 				<p data-block='0' class="catalog-page__text">Шапочки, кепки и шляпы Lassie® защищают круглый год. Выбирайте подходящий головной убор: шляпку с полями или кепку с козырьком на лето, тоненькую шапочку без подкладки на осень или весну, и шапку с подкладкой из флиса или джерси на зиму. Многие наши
@@ -60,7 +83,12 @@ $APPLICATION->IncludeComponent(
 	$component,
 	array('HIDE_ICONS' => 'Y')
 );
+?>
+<?endif;?>
 
+<?
+
+$section = $_GET["section_id"] ?? $arResult["VARIABLES"]["SECTION_ID"];
 
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
@@ -70,8 +98,9 @@ $APPLICATION->IncludeComponent(
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		
 		"SHOW_ALL_WO_SECTION" => "Y",
+		"INCLUDE_SUBSECTIONS" => $arParams["INCLUDE_SUBSECTIONS"],
 		"SET_TITLE" => 'N',
-
+		"AJAX" => $_GET["ajax_mode"],
 		"ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
 		"ELEMENT_SORT_ORDER" => $arParams["ELEMENT_SORT_ORDER"],
  		"PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
@@ -108,15 +137,17 @@ $APPLICATION->IncludeComponent(
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => $arParams["PAGER_DESC_NUMBERING_CACHE_TIME"],
 		"PAGER_SHOW_ALL" => $arParams["PAGER_SHOW_ALL"],
 
-		"SECTION_ID" => $arResult["VARIABLES"]["SECTION_ID"],
+
+			"SECTION_ID" => $section  ,
 		"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
 		"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+	
 	),
 	$component
 );?>
 </div>
-
+<?if ($_GET["ajax_mode"] !== 'y') :?>
 <p data-block='2' class="catalog-page__text">Шапочки, кепки и шляпы Lassie® защищают круглый год. Выбирайте
 				подходящий головной убор: шляпку с полями или кепку с козырьком на лето, тоненькую шапочку без подкладки на
 				осень или весну, и шапку с подкладкой из флиса или джерси на зиму. Многие наши
@@ -124,3 +155,9 @@ $APPLICATION->IncludeComponent(
 				маленьких лучшим выбором во время метели и снежной бури станут наши ветрозащитные зимние шапки или шапки из
 				искусственного меха.</p><a href="javascript:void(0);" data-btn='2' data-text="Скрыть текст"
 				class="js-block-show link text">Читать далее</a>
+				<? 
+			endif;?>
+
+<?if ($_GET["ajax_mode"] == 'y') {
+die();
+}

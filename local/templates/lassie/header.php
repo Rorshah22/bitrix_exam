@@ -160,11 +160,11 @@ use Bitrix\Main\Page\Asset;
 		"IBLOCK_ID" => "9",
 		"SECTION_ID" => $_REQUEST["SECTION_ID"],
 		"SECTION_CODE" => "",
-		"COUNT_ELEMENTS" => "N",
+		"COUNT_ELEMENTS" => "Y",
 		"COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
 		"TOP_DEPTH" => "3",
 		"SECTION_FIELDS" => array(
-			0 => "CODE",
+			0 => "ID",
 			1 => "",
 		),
 		"SECTION_USER_FIELDS" => array(
@@ -174,7 +174,7 @@ use Bitrix\Main\Page\Asset;
 		"FILTER_NAME" => "sectionsFilter",
 		"VIEW_MODE" => "LINE",
 		"SHOW_PARENT_NAME" => "Y",
-		"SECTION_URL" => "/#IBLOCK_CODE#/#SECTION_ID#",
+		"SECTION_URL" => "/#IBLOCK_CODE#/#SECTION_CODE_PATH#/",
 		"CACHE_TYPE" => "A",
 		"CACHE_TIME" => "36000000",
 		"CACHE_GROUPS" => "Y",
@@ -192,15 +192,15 @@ use Bitrix\Main\Page\Asset;
 					<ul class="breadcrumbs">
 
 						<? $APPLICATION->IncludeComponent(
-							"bitrix:breadcrumb",
-							"main_breadcrumb",
-							array(
-								"COMPONENT_TEMPLATE" => "main_breadcrumb",
-								"START_FROM" => "0",
-								"PATH" => "",
-								"SITE_ID" => "s1"
-							),
-							false
-						); ?>
+	"bitrix:breadcrumb", 
+	"main_breadcrumb", 
+	array(
+		"COMPONENT_TEMPLATE" => "main_breadcrumb",
+		"START_FROM" => "0",
+		"PATH" => "",
+		"SITE_ID" => "s1"
+	),
+	false
+); ?>
 					</ul>
 				<? endif; ?>
